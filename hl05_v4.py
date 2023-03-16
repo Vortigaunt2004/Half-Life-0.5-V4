@@ -11,6 +11,24 @@ class Player:
         self.ammo -= 1
         return random.randint(10, 20)
     
+    def heal(self):
+        if self.ammo >= 5:
+            self.ammo -= 5
+            self.health += 20
+            print("You healed for 20 health!")
+        else:
+            print("You don't have enough ammo to heal!")
+    
+        elif action == 'flee':
+            if random.random() < 0.5:
+                print("You successfully flee from the enemy.")
+                break
+            else:
+                print("You failed to flee from the enemy.")
+        else:
+            print("Invalid action.")
+            continue
+    
     def defend(self, damage):
         if self.armor >= damage:
             self.armor -= damage
@@ -166,16 +184,27 @@ while True:
     while enemy['health'] > 0 and player.is_alive():
         # Player turn
         print(f"Your health: {player.health} | Your armor: {player.armor} | Your ammo: {player.ammo}\n")
-        action = input("What would you like to do? (attack/defend) \n")
+        action = input("What would you like to do? (attack/defend/flee/heal) \n")
         
-        if action ==  'attack':
-            damage = player.attack()
-            enemy['health'] -= damage
-            print(f"You dealt {damage} damage to the {enemy['name']}!\n")
-        elif action == 'defend':
-            enemy_damage = random.randint(5, 15)
-            player.defend(enemy_damage)
-            print(f"You defended against the {enemy['name']}'s attack, taking {enemy_damage} damage!\n")
+    # Player actions
+    action = input("Choose your action (attack, flee, heal): ")
+
+    if action == 'attack':
+        damage = player.attack()
+        print(f"You dealt {damage} damage to the {enemy['name']}!")
+        enemy['health'] -= damage
+    elif action == 'flee':
+        if random.random() < 0.5:
+            print("You successfully fled from the enemy.")
+            break
+        else:
+            print("You failed to flee from the enemy.")
+    elif action == 'heal':
+        player.heal()
+    else:
+        print("Invalid action.")
+        continue
+
             
         # Enemy turn
         if enemy['health'] > 0:
