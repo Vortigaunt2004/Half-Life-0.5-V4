@@ -54,19 +54,6 @@ enemies = [
         'health': 100,
         'damage': 20
     },
-    {
-        'name': 'Benjamin Brinkles',
-        'health': 100,
-        'damage': 20
-    },
-
-    {
-
-        'name': 'William Beckett',
-        'health': 40,
-        'damage': 7
-
-    },
 
     {
 
@@ -99,11 +86,6 @@ enemies = [
         'name': 'Vortigaunt',
         'health': 60,
         'damage': 35
-    },
-    {
-        'name': 'Woody Howard',
-        'health': 40,
-        'damage': 7
     }
 ]
 
