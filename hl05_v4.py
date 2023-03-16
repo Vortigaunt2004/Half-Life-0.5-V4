@@ -75,7 +75,31 @@ enemies = [
         'damage': 37
 
     },
-    
+    {
+        'name': 'Gargantua',
+        'health': 200,
+        'damage': 25
+    },
+    {
+        'name': 'Ichthyosaur',
+        'health': 80,
+        'damage': 20
+    },
+    {
+        'name': 'Barnacle',
+        'health': 10,
+        'damage': 3
+    },
+    {
+        'name': 'Houndeye',
+        'health': 30,
+        'damage': 10
+    },
+    {
+        'name': 'Vortigaunt',
+        'health': 60,
+        'damage': 35
+    },
     {
         'name': 'Woody Howard',
         'health': 40,
