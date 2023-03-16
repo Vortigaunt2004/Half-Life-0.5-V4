@@ -54,7 +54,31 @@ enemies = [
         'health': 100,
         'damage': 20
     },
-
+    {
+            'name': 'Shock Trooper',
+            'health': 80,
+            'damage': 25
+    },
+    {
+            'name': 'Pit Drone',
+            'health': 80,
+            'damage': 10
+    },
+    {
+            'name': 'Gonarch',
+            'health': 600,
+            'damage': 35
+    },
+    {
+            'name': 'Alien Grunt',
+            'health': 80,
+            'damage': 25
+    },
+    {
+            'name': 'Bullsquid',
+            'health': 60,
+            'damage': 15
+    },
     {
 
         'name': 'Father Grigori',
