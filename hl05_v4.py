@@ -1,5 +1,4 @@
 import random
-
 # Player class
 class Player:
     def __init__(self, health, armor, ammo):
@@ -11,24 +10,6 @@ class Player:
         self.ammo -= 1
         return random.randint(10, 20)
     
-    def heal(self):
-        if self.ammo >= 5:
-            self.ammo -= 5
-            self.health += 20
-            print("You healed for 20 health!")
-        else:
-            print("You don't have enough ammo to heal!")
-    
-        elif action == 'flee':
-            if random.random() < 0.5:
-                print("You successfully flee from the enemy.")
-                break
-            else:
-                print("You failed to flee from the enemy.")
-        else:
-            print("Invalid action.")
-            continue
-    
     def defend(self, damage):
         if self.armor >= damage:
             self.armor -= damage
@@ -39,7 +20,6 @@ class Player:
             
     def is_alive(self):
         return self.health > 0
-
 # Enemies list
 enemies = [
     {
@@ -72,6 +52,7 @@ enemies = [
         'health': 100,
         'damage': 20
     },
+
     {
             'name': 'Shock Trooper',
             'health': 80,
@@ -102,7 +83,6 @@ enemies = [
         'name': 'Father Grigori',
         'health': 120,
         'damage': 37
-
     },
     {
         'name': 'Gargantua',
@@ -130,13 +110,11 @@ enemies = [
         'damage': 35
     }
 ]
-
 # Random encounter function
 def random_encounter():
     enemy = random.choice(enemies)
     print(f"You've encountered a {enemy['name']} with {enemy['health']} health!\n")
     return enemy
-
 # Character dialogue
 eli_dialogue = [
     "Eli: We don't go there anymore.\n",
@@ -144,38 +122,32 @@ eli_dialogue = [
     "Eli: We'll make a sharpshooter out of you yet.\n",
     "Eli: Keep it up, Gordon!\n"
 ]
-
 alyx_dialogue = [
     "Alyx: You know Dr. Kleiner's gonna be mad if you break his record.\n",
     "Alyx: Gordon, why don't you position yourself near the panel over there and wait for my word?\n",
     "Alyx: I'm glad you're on our side.\n",
     "Alyx: Let's get out of here!\n"
 ]
-
 gman_dialogue = [
     "Gman: Rise and shine, Mr. Freeman. Rise and shine.\n",
     "Gman: I'm afraid we'll be deviating a bit from standard analysis procedures today.\n",
     "Gman: I have recommended your services to my employers.\n",
     "Gman: We'll see each other again, in the flesh.\n"
 ]
-
 kleiner_dialogue = [
     "Kleiner: Ah, Gordon! The very man I hoped to see.\n",
     "Kleiner: I've made a few modifications, but still, your gravity gun should be able to handle them.\n",
     "Kleiner: Ah, Gordon, there you are!\n",
     "Kleiner: Now, now, there's nothing to be nervous about.\n"
 ]
-
 barney_dialogue = [
     "Barney: Hey, hey, he's back!\n",
     "Barney: You're heading for the Lambda Complex, aren't you?\n",
     "Barney: Good luck, buddy!\n",
     "Barney: I'm with ya, Doc!\n"
 ]
-
 # Game loop
 player = Player(100, 50, 30)
-
 while True:
     # Random encounter
     enemy = random_encounter()
@@ -184,27 +156,16 @@ while True:
     while enemy['health'] > 0 and player.is_alive():
         # Player turn
         print(f"Your health: {player.health} | Your armor: {player.armor} | Your ammo: {player.ammo}\n")
-        action = input("What would you like to do? (attack/defend/flee/heal) \n")
+        action = input("What would you like to do? (attack/defend) \n")
         
-    # Player actions
-    action = input("Choose your action (attack, flee, heal): ")
-
-    if action == 'attack':
-        damage = player.attack()
-        print(f"You dealt {damage} damage to the {enemy['name']}!")
-        enemy['health'] -= damage
-    elif action == 'flee':
-        if random.random() < 0.5:
-            print("You successfully fled from the enemy.")
-            break
-        else:
-            print("You failed to flee from the enemy.")
-    elif action == 'heal':
-        player.heal()
-    else:
-        print("Invalid action.")
-        continue
-
+        if action ==  'attack':
+            damage = player.attack()
+            enemy['health'] -= damage
+            print(f"You dealt {damage} damage to the {enemy['name']}!\n")
+        elif action == 'defend':
+            enemy_damage = random.randint(5, 15)
+            player.defend(enemy_damage)
+            print(f"You defended against the {enemy['name']}'s attack, taking {enemy_damage} damage!\n")
             
         # Enemy turn
         if enemy['health'] > 0:
